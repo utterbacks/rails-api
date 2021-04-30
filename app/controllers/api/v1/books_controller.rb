@@ -12,6 +12,13 @@ class Api::V1::BooksController < ApplicationController
     render json: BooksRepresenter.new(books).as_json
   end
 
+  def show
+    book = Book.find(params[:id])
+    render json: BookRepresenter.new(book).as_json
+  rescue ActiveRecord::RecordNotFound
+      render json: {status: :not_found, message: "Please check for correct id."}
+  end
+
   def create
     author = Author.create!(author_params)
     book = Book.new(book_params.merge(author_id: author.id))

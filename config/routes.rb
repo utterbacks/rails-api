@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       
       resources :books, only: [:index, :create, :destroy]
+      get 'books/:id', to: 'books#show'
       post 'auth', to: 'auth#create'
     end
   end

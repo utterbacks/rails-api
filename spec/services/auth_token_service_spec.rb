@@ -11,6 +11,6 @@ describe AuthTokenService do
           {"alg"=>"HS256"}
         ]
       )
-    end
+    end  
   end
 end
